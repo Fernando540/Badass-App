@@ -1,72 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="acm1pt.badassapp.index"
-    android:background="@drawable/indexbackground">
+    android:background="@drawable/indexbackground"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TableRow
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/badassTitle"
-            android:id="@+id/textView"
-            android:layout_column="0"
-            android:layout_span="2"
+            android:id="@+id/indexTitle"
             android:textStyle="bold"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:textColor="#ffffff" />
-    </TableRow>
+            android:textColor="#ffffff"
+            android:textAlignment="center" />
+    </LinearLayout>
 
-    <TableRow
+    <ListView android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbarStyle="outsideOverlay" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_column="0"
-            android:paddingTop="100dp"
-            android:paddingBottom="100dp"
-            android:layout_span="2">
-
-            <SeekBar
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/seekBar"
-                android:layout_gravity="center" />
-        </FrameLayout>
-    </TableRow>
-
-    <TableRow
+    <LinearLayout style="?android:buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <Button
-            android:layout_width="match_parent"
+        <Button style="?android:buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/Login"
-            android:id="@+id/button"
-            android:layout_column="0"
+            android:id="@+id/btnLogin"
             android:background="#000000"
             android:textColor="#ffffff"
             android:clickable="true" />
 
-        <Button
-            android:layout_width="match_parent"
+        <Button style="?android:buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/Register"
-            android:id="@+id/button2"
-            android:layout_column="1"
+            android:id="@+id/btnRegister"
             android:textColor="#ffffff"
             android:background="#8d5431"
             android:clickable="true" />
 
-    </TableRow>
-</TableLayout>
+    </LinearLayout>
+
+</LinearLayout>
