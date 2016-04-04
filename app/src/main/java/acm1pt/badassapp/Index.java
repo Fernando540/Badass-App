@@ -2,8 +2,9 @@ package acm1pt.badassapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 
-public class Index extends AppCompatActivity {
+public class index extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BadassApp.iml" filepath="$PROJECT_DIR$/BadassApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Badass-App.iml" filepath="$PROJECT_DIR$/Badass-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
