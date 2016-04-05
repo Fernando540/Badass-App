@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import java.sql.SQLOutput;
 
-public class login extends AppCompatActivity implements View.OnClickListener{
+public class login1 extends AppCompatActivity implements View.OnClickListener{
     EditText correin;
     EditText pass;
     private Button entrar;
@@ -28,7 +28,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         if(v==entrar){
             if(correin.getText().toString().equals("e@e.com") && pass.getText().toString().equals("123")){
-                Intent intent = new Intent(login.this,home.class);
+                Intent intent = new Intent(login1.this,home.class);
                 startActivity(intent);
                 finish();
             }
