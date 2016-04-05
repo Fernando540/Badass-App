@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="acm1pt.badassapp.index"
-    android:background="@drawable/indexbackground"
     android:orientation="vertical"
     android:weightSum="1">
+
+    <RelativeLayout
+        android:id="@+id/rLayout_Splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background1"
+        android:layout_alignParentBottom="true">
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -24,19 +32,18 @@
             android:textStyle="bold"
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:textColor="#ffffff"
-            android:textAlignment="center" />
-    </LinearLayout>
+            android:textAlignment="center"
+            android:background="#78bdbdbd" />
 
-    <ListView android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbarStyle="outsideOverlay" />
+    </LinearLayout>
 
     <LinearLayout style="?android:buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button style="?android:buttonBarButtonStyle"
             android:layout_width="0dp"
@@ -57,7 +64,6 @@
             android:textColor="#ffffff"
             android:background="#8d5431"
             android:clickable="true" />
-
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

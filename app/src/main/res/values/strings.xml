@@ -1,6 +1,22 @@
 <resources>
+
+    <!-- Strings related to index -->
     <string name="app_name">Badass App</string>
     <string name="Register">REGÍSTRATE</string>
     <string name="Login">INICIAR SESIÓN</string>
     <string name="badassTitle">Badass House</string>
+    <string name="title_activity_login">INICIAR SESIÓN</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">INICIO DE SESIÓN</string>
+    <string name="action_sign_in_short">Loguearse</string>
+    <string name="error_invalid_email">La dirección de correo es invalida</string>
+    <string name="error_invalid_password">La contraseña es muy corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">"Se necesitan permisos de contactos para proporcionar terminaciones de correo electrónico."
+    </string>
+    <string name="loginHeader">INICIAR SESIÓN</string>
 </resources>
