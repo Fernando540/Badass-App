@@ -19,4 +19,6 @@
     <string name="permission_rationale">"Se necesitan permisos de contactos para proporcionar terminaciones de correo electrónico."
     </string>
     <string name="loginHeader">INICIAR SESIÓN</string>
+
+
 </resources>
