@@ -4,13 +4,13 @@
 
     <scale
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:duration="10000"
+        android:duration="9000"
         android:fromXScale="1"
         android:fromYScale="1"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:toXScale="1.08"
-        android:toYScale="1.08" >
+        android:toXScale="1.10"
+        android:toYScale="1.10" >
     </scale>
 
 </set>

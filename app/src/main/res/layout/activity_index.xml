@@ -45,25 +45,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <Button style="?android:buttonBarButtonStyle"
+        <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:text="@string/Login"
             android:id="@+id/btnLogin"
-            android:background="#000000"
             android:textColor="#ffffff"
-            android:clickable="true" />
+            android:clickable="true"
+            android:background="@drawable/custombtnlog" />
 
-        <Button style="?android:buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/Register"
-            android:id="@+id/btnRegister"
-            android:textColor="#ffffff"
-            android:background="#8d5431"
-            android:clickable="true" />
     </LinearLayout>
 
 </RelativeLayout>

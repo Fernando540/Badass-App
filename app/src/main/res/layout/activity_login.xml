@@ -17,7 +17,8 @@
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:paddingTop="15dp"
-        android:background="#000000" />
+        android:background="#bf360c"
+        android:autoText="false" />
 
     <RelativeLayout
         android:layout_width="match_parent"

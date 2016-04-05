@@ -24,7 +24,6 @@ public class index extends AppCompatActivity implements Animation.AnimationListe
 
         SplashScreen_rLayout = (RelativeLayout) findViewById(R.id.rLayout_Splash);
         btnLog = (Button) findViewById(R.id.btnLogin);
-        btnReg = (Button) findViewById(R.id.btnRegister);
 
         animZoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom_in);
         fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
