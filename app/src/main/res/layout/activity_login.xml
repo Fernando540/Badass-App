@@ -46,15 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/prompt_email"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:inputType="textEmailAddress" />
-
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -76,14 +67,14 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btnSign_in"
+                    android:id="@+id/btn"
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/action_sign_in"
                     android:textStyle="bold"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:background="#c8689f38" />
 
             </LinearLayout>
@@ -96,6 +87,16 @@
             android:layout_height="380dp"
             android:layout_marginBottom="8dp"
             android:visibility="gone" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/correo"
+            android:layout_marginBottom="32dp"
+            android:layout_above="@+id/login_form"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
