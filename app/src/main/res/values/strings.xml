@@ -20,5 +20,17 @@
     </string>
     <string name="loginHeader">INICIAR SESIÓN</string>
 
+    <string-array name="Tags">
+        <item>HTML</item>
+        <item>CSS</item>
+        <item>JavaScript</item>
+        <item>Angular JS</item>
+        <item>Python</item>
+        <item>Ruby on Rails</item>
+    </string-array>
+
+    <string name="drawer_open">Abrir navigation drawer</string>
+    <string name="drawer_close">Cerrar navigation drawer</string>
+    <string name="headlines">Encabezados de</string>
 
 </resources>

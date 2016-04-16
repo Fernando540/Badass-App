@@ -43,7 +43,7 @@ public class index extends AppCompatActivity implements Animation.AnimationListe
                 Intent intent = new Intent(index.this,
                         login.class);
                 startActivity(intent);
-                finish();
+
             }
         });
     }

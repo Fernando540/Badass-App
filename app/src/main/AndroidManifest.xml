@@ -28,6 +28,7 @@
             android:name=".login"
             android:label="@string/title_activity_login" />
         <activity android:name=".home" />
+        <activity android:name=".Main" />
     </application>
 
 </manifest>
