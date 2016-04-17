@@ -57,7 +57,10 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                 results = (String[]) result;
 
             }catch(Exception e){
-
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                e.getMessage(), Toast.LENGTH_SHORT);
+                toast1.show();
             }
 
             //Para cuando Sirva el WEB Service :v
@@ -73,7 +76,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
             }
             if(correin.getText().toString().equals("e@e.com") && pass.getText().toString().equals("123")){
-                Intent intent = new Intent(login.this,Main.class);
+                Intent intent = new Intent(login.this,home.class);
                 startActivity(intent);
                 finish();
             }
