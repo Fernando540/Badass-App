@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 
 public class login extends AppCompatActivity implements View.OnClickListener{
@@ -20,6 +23,10 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     EditText pass;
     private Button entrar;
     String[] results;
+    private SoapObject request=null;
+    private SoapSerializationEnvelope envelope=null;
+    private SoapPrimitive resultsRequestSOAP=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,51 +41,59 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==entrar){
+            String NAMESPACE = "http://badasshouse.ddns.net:81/WebServices/";
+            String URL = "http://badasshouse.ddns.net:81/WebServices/WS_Login?wsdl";
+            String METHOD_NAME = "WS_Login";
+            String SOAP_ACTION = "http://badasshouse.ddns.net:81/WebServices/WS_Login";
+            request = new SoapObject(NAMESPACE, METHOD_NAME);
+            request.addProperty("correo",correin.getText().toString() );
+            request.addProperty("pass",pass.getText().toString());
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            //envelope.dotNet = false;
+
+
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE transporte = new HttpTransportSE(URL);
+
             try {
-                String NAMESPACE = "http://189.245.172.14:81/WebServices/";
-                String URL = "http://189.245.172.14:81/WebServices/WS_Login?wsdl";
-                String METHOD_NAME = "WS_Login";
-                String SOAP_ACTION = "http://189.245.172.14:81/WebServices/WS_Login";
 
-                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-
-                request.addProperty("correo", correin.getText().toString());
-                request.addProperty("pass", pass.getText().toString());
-
-                SoapSerializationEnvelope envelope =
-                        new SoapSerializationEnvelope(SoapEnvelope.VER11);
-
-                envelope.dotNet = false;
-                envelope.setOutputSoapObject(request);
+                transporte.call(SOAP_ACTION, envelope);
 
 
-    /* Se captura la respuesta */
-                Object result = (Object) envelope.getResponse();
-                results = (String[]) result;
+                resultsRequestSOAP = (SoapPrimitive)envelope.getResponse();
 
-            }catch(Exception e){
+            } catch (IOException e) {
+                String mensage= e.toString();
+                // TODO Auto-generated catch block
                 Toast toast1 =
                         Toast.makeText(getApplicationContext(),
-                                e.getMessage(), Toast.LENGTH_SHORT);
+                                mensage, Toast.LENGTH_SHORT);
+
+                toast1.show();
+
+            } catch (XmlPullParserException e) {
+                // TODO Auto-generated catch block
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                e.toString(), Toast.LENGTH_SHORT);
+
                 toast1.show();
             }
 
-            //Para cuando Sirva el WEB Service :v
-            if(results[0].equals("invalido")){
-                Toast toast1 =
+            //Almacenamos el resultado en un String ya que lo que represa
+            //el ws es una cadena json, representando una lista AndroidOS
+            //de objetos del tipo
+            //String  strJSON = resultsRequestSOAP.toString();
+            if("e".equals("invalido")){
+                Intent intent = new Intent(login.this,index.class);
+                startActivity(intent);
+                finish();
+            }else{
+                /*Toast toast1 =
                         Toast.makeText(getApplicationContext(),
                                 "Usuario Invalido", Toast.LENGTH_SHORT);
 
-                toast1.show();
-            }else{
-                Intent intent = new Intent(login.this,home.class);
-                startActivity(intent);
-
-            }
-            if(correin.getText().toString().equals("e@e.com") && pass.getText().toString().equals("123")){
-                Intent intent = new Intent(login.this,home.class);
-                startActivity(intent);
-                finish();
+                toast1.show();*/
             }
         }
     }

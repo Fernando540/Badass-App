@@ -29,7 +29,7 @@ public class home extends AppCompatActivity{
 
 
 
-        //adapter=new PagerAdapter(manager);
+       // adapter=new PagerAdapter(manager);
 
 
         pager.setAdapter(adapter);
