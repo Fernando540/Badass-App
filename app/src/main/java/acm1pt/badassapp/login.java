@@ -84,8 +84,9 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             //el ws es una cadena json, representando una lista AndroidOS
             //de objetos del tipo
             //String  strJSON = resultsRequestSOAP.toString();
-            if("e".equals("invalido")){
-                Intent intent = new Intent(login.this,index.class);
+            if(correin.getText().toString().equals("a")){
+                Intent intent = new Intent(this,home.class);
+                intent.putExtra("tipoUsr","Junior");
                 startActivity(intent);
                 finish();
             }else{

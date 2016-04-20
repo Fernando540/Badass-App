@@ -14,16 +14,26 @@ import android.view.ViewGroup;
 public class DespensaFragment extends Fragment {
 
 
+    public static DespensaFragment newInstance() {
+        DespensaFragment fragment = new DespensaFragment();
+        return fragment;
+    }
+
     public DespensaFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_despensa, container, false);
     }
+
 
 }

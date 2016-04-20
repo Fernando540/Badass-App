@@ -1,47 +1,31 @@
 package acm1pt.badassapp;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
-import java.lang.reflect.ParameterizedType;
 
 public class home extends AppCompatActivity{
-    ViewPager pager;
-    TabLayout tabLayout;
-    PagerAdapter adapter;
-    FragmentManager manager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_);
 
-        pager= (ViewPager) findViewById(R.id.view_pager);
-        tabLayout= (TabLayout) findViewById(R.id.tab_layout);
+        Intent i = getIntent();
+        String x = i.getExtras().getString("tipoUsr").toString();
 
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new MiFragmentPagerAdapter(
+                getSupportFragmentManager()));
 
-        manager=getSupportFragmentManager();
-
-
-
-
-       // adapter=new PagerAdapter(manager);
-
-
-        pager.setAdapter(adapter);
-
-
-        tabLayout.setupWithViewPager(pager);
-
-
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-        tabLayout.setTabsFromPagerAdapter(adapter);
-
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setupWithViewPager(viewPager);
     }
+
 }

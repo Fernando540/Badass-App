@@ -1,14 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="acm1pt.badassapp.EstatusFragment">
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+tools:context="acm1pt.badassapp.EstatusFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Pestaña de Estatus" />
+<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+    android:text="Pestaña de Estatus" />
 
 </FrameLayout>
