@@ -6,13 +6,24 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONObject;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EstatusFragment extends Fragment {
+public class EstatusFragment extends BaseVolleyFragment {
 
+    private TextView label;
+    private Button connector;
 
     public static EstatusFragment newInstance() {
         EstatusFragment fragment = new EstatusFragment();
@@ -24,15 +35,48 @@ public class EstatusFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_estatus, container, false);
+        label = (TextView) v.findViewById(R.id.label);
+        connector = (Button) v.findViewById(R.id.connection_button);
+        return v;
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_estatus, container, false);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        connector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeRequest();
+            }
+        });
+    }
+
+    private void makeRequest(){
+        String url = "http://192.168.1.72:8181/HelloWorldApplication/webresources/application.wadl";
+        StringRequest request = new StringRequest(url,
+
+                new Response.Listener<String>(){
+
+                    @Override
+                    public void onResponse(String response) {
+                        label.setText(response);
+                        onConnectionFinished();
+                    }
+                }
+
+                , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        onConnectionFailed(volleyError.toString());
+                    }
+                }
+        );
+
+        addToQueue(request);
     }
 
 }

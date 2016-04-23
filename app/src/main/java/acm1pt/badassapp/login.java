@@ -41,25 +41,47 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==entrar){
-            String NAMESPACE = "http://badasshouse.ddns.net:81/WebServices/";
-            String URL = "http://badasshouse.ddns.net:81/WebServices/WS_Login?wsdl";
+            String NAMESPACE = "http://WSBadassHouse/";
+            String URL = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
             String METHOD_NAME = "WS_Login";
-            String SOAP_ACTION = "http://badasshouse.ddns.net:81/WebServices/WS_Login";
+            String SOAP_ACTION = "http://192.168.1.72:8181/WS_Login";
             request = new SoapObject(NAMESPACE, METHOD_NAME);
             request.addProperty("correo",correin.getText().toString() );
             request.addProperty("pass",pass.getText().toString());
             envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-            //envelope.dotNet = false;
-
 
             envelope.setOutputSoapObject(request);
             HttpTransportSE transporte = new HttpTransportSE(URL);
 
-            try {
-
+            try
+            {
                 transporte.call(SOAP_ACTION, envelope);
 
+                SoapPrimitive resultado_xml =(SoapPrimitive)envelope.getResponse();
+                String res = resultado_xml.toString();
 
+
+                    Toast toast1 = Toast.makeText(getApplicationContext(),res.toString(), Toast.LENGTH_SHORT);
+                    toast1.show();
+
+            }
+            catch (Exception e)
+            {
+                Toast toast1 = Toast.makeText(getApplicationContext(),e.toString(), Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+
+            if(correin.getText().toString().equals("fer@gmail.com")){
+                Intent intent = new Intent(this,home.class);
+                intent.putExtra("tipoUsr","Junior");
+                startActivity(intent);
+                finish();
+            }
+
+
+            /*try {
+
+                transporte.call(SOAP_ACTION, envelope);
                 resultsRequestSOAP = (SoapPrimitive)envelope.getResponse();
 
             } catch (IOException e) {
@@ -78,13 +100,16 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                                 e.toString(), Toast.LENGTH_SHORT);
 
                 toast1.show();
-            }
+            }*/
 
             //Almacenamos el resultado en un String ya que lo que represa
             //el ws es una cadena json, representando una lista AndroidOS
             //de objetos del tipo
             //String  strJSON = resultsRequestSOAP.toString();
-            if(resultsRequestSOAP.toString()!="invalido"){
+
+
+            /*
+            if(correin.getText().toString().equals("fer@gmail.com")){
                 Intent intent = new Intent(this,home.class);
                 intent.putExtra("tipoUsr","Junior");
                 startActivity(intent);
@@ -95,7 +120,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                                 "Usuario Invalido", Toast.LENGTH_SHORT);
 
                 toast1.show();
-            }
+            }*/
         }
     }
 }
