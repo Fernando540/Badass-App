@@ -56,7 +56,7 @@ public class EstatusFragment extends BaseVolleyFragment {
     }
 
     private void makeRequest(){
-        String url = "http://192.168.1.72:8181/HelloWorldApplication/webresources/application.wadl";
+        String url = "http://badasshouse.ddns.net:81/WebServices/WS_Login?wsdl";
         StringRequest request = new StringRequest(url,
 
                 new Response.Listener<String>(){
