@@ -1,16 +1,19 @@
 package acm1pt.badassapp;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 2;
-        private String tabTitles[] =
-            new String[] {"Estatus", "Despensa"};
+    final int PAGE_COUNT = 4;
+    private String tabTitles[] = {"Estatus", "DESPENSA","Habitaciones","Configuración"};
 
-    public MiFragmentPagerAdapter(FragmentManager fm) {
+    private Context context;
+
+    public MiFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override
@@ -28,10 +31,15 @@ public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
                 break;
             case 1:f = DespensaFragment.newInstance();
                 break;
+            case 2:f = RoomsFragment.newInstance();
+                break;
+            case 3:f = ConfigFragment.newInstance();
+                break;
         }
 
         return f;
     }
+
 
     @Override
     public CharSequence getPageTitle(int position) {
