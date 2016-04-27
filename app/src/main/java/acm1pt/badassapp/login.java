@@ -89,7 +89,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         @Override
         protected Void doInBackground(String... params) {
             resultLogin = WebService.invokeLogin(correo,password, "login");
-            resultTipo=WebService.dimeTipo(correo);
+            resultTipo = WebService.dimeTipo(correo);
             return null;
         }
 
@@ -97,6 +97,13 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         protected void onPostExecute(Void result) {
             pg.setVisibility(View.INVISIBLE);
             LoginSucces(resultLogin,resultTipo);
+
+            /*Context context = getApplicationContext();
+            CharSequence text = resultTipo;
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();*/
         }
 
         @Override

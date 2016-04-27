@@ -16,7 +16,13 @@ public class WebService {
     private static String URLcesar = "http://192.168.1.72:8181/WebServices/CifraCesar?wsdl";
     private static String URLsha = "http://192.168.1.72:8181/WebServices/CifraSha?wsdl";
     private static String URLlog = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
-    private static String URLTipo="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";
+    private static String URLTipo="http://192.168.1.72:8181/WebServices/WSGenerico?wsdl";
+
+    /*
+    private static String URLcesar = "http://192.168.1.72:8181/WebServices/CifraCesar?wsdl";
+    private static String URLsha = "http://192.168.1.72:8181/WebServices/CifraSha?wsdl";
+    private static String URLlog = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
+    private static String URLTipo="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";*/
 
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://WSBadassHouse/";
@@ -37,7 +43,6 @@ public class WebService {
                 new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
         envelope.setOutputSoapObject(request);
-
         HttpTransportSE transporte = new HttpTransportSE(URLlog);
 
         try
@@ -45,12 +50,10 @@ public class WebService {
             transporte.call(SOAP_ACTION+webMethName, envelope);
             SoapPrimitive response =(SoapPrimitive)envelope.getResponse();
             resTxt = response.toString();
-            //Se procesa el resultado devuelto
-            //...
         }
         catch (Exception e)
         {
-            resTxt = "Error occured";
+            resTxt = "invalido";
         }
 
         //Return resTxt to calling object
@@ -97,6 +100,7 @@ public class WebService {
         }
         return txtSha;
     }
+
     public static String dimeTipo(String correo){
         String tipo="";
         SoapObject request = new SoapObject(NAMESPACE, "dimeTipo");

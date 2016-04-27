@@ -5,13 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
+public class FragPagerAdapt1 extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
     private String tabTitles[] = {"Estatus", "DESPENSA","Habitaciones","Configuración"};
 
     private Context context;
 
-    public MiFragmentPagerAdapter(FragmentManager fm, Context context) {
+    public FragPagerAdapt1(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }
