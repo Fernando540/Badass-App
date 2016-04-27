@@ -49,6 +49,10 @@ public class RoomsFragment extends Fragment  {
         return v;
     }
 
+    public void setUse(String uso){
+
+    }
+
     private class PrendeTask extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {

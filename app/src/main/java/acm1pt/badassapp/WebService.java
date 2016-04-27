@@ -137,12 +137,38 @@ public class WebService {
         try
         {
             transporte.call(SOAP_ACTION+"simulaCorr", envelope);
-            /*SoapPrimitive response =(SoapPrimitive)envelope.getResponse();
-            tipo = response.toString();*/
         }
         catch (Exception e)
         {
-            //tipo = "Error occured";
+
         }
+    }
+
+    public static String[] enchufes (String mail, String hName){
+        String [] usos = new String[4];
+        SoapObject request = new SoapObject(NAMESPACE, "enchuState");
+        request.addProperty("correo", mail);
+        request.addProperty("habName", hName);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(request);
+        HttpTransportSE transporte = new HttpTransportSE(URLsha);
+
+        try{
+            transporte.call(SOAP_ACTION+"enchuState", envelope);
+            SoapObject obj1 = (SoapObject) envelope.bodyIn;
+
+            SoapObject obj2 =(SoapObject) obj1.getProperty(0);
+            for (int i = 0; i< obj2.getPropertyCount(); i++)
+            {
+                // int id1 = Integer.parseInt(obj2.getProperty(0).toString());
+                String id1 = obj2.getProperty(0).toString();
+                usos[i] = id1;
+            }
+        }
+        catch (Exception e) {
+
+        }
+
+        return usos;
     }
 }
