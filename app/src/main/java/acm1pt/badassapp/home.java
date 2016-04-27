@@ -7,10 +7,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+import android.view.View;
+import android.widget.Switch;
+>>>>>>> origin/master
 
 
-public class home extends AppCompatActivity{
+public class home extends AppCompatActivity implements View.OnClickListener{
+    Switch boton;
 
 
     @Override
@@ -28,7 +34,8 @@ public class home extends AppCompatActivity{
         toast.show();*/
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
-
+        boton=(Switch) findViewById(R.id.enchufe1);
+        boton.setOnClickListener(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
@@ -113,5 +120,21 @@ public class home extends AppCompatActivity{
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v==boton){
+            String correo="e@e.com";
+            String enchufe=boton.getText().toString();
+            String habit="Habitacion 1";
+            String voltaje="";
+            if(boton.isChecked()){
+                voltaje="0";
+            }else{
+                voltaje="50";
+            }
+            WebService.onOff(correo,voltaje,enchufe,habit);
+        }
     }
 }
