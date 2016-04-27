@@ -16,7 +16,8 @@ public class WebService {
     private static String URLcesar = "http://192.168.1.72:8181/WebServices/CifraCesar?wsdl";
     private static String URLsha = "http://192.168.1.72:8181/WebServices/CifraSha?wsdl";
     private static String URLlog = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
-    private static String URLTipo="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";
+    private static String URLGenerico="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";
+
 
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://WSBadassHouse/";
@@ -103,7 +104,7 @@ public class WebService {
         request.addProperty("correo", correo);
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.setOutputSoapObject(request);
-        HttpTransportSE transporte = new HttpTransportSE(URLTipo);
+        HttpTransportSE transporte = new HttpTransportSE(URLGenerico);
 
         try
         {
@@ -116,5 +117,26 @@ public class WebService {
             tipo = "Error occured";
         }
         return tipo;
+    }
+    public static void onOff(String correo, String voltaje,String contact, String habit){
+        SoapObject request = new SoapObject(NAMESPACE, "simulaCorr");
+        request.addProperty("correo", correo);
+        request.addProperty("volt", voltaje);
+        request.addProperty("habit", habit);
+        request.addProperty("contact", contact);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(request);
+        HttpTransportSE transporte = new HttpTransportSE(URLGenerico);
+
+        try
+        {
+            transporte.call(SOAP_ACTION+"dimeTipo", envelope);
+            /*SoapPrimitive response =(SoapPrimitive)envelope.getResponse();
+            tipo = response.toString();*/
+        }
+        catch (Exception e)
+        {
+            //tipo = "Error occured";
+        }
     }
 }
