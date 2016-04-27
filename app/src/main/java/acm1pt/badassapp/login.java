@@ -17,7 +17,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     EditText correin;
     EditText pass;
     ProgressBar pg;
-    String correo, password, resultLogin;
+    String correo, password, resultLogin,resultTipo;
     private Button entrar;
 
     @Override
@@ -63,7 +63,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    public void LoginSucces(String resultado){
+    public void LoginSucces(String resultado, String tipo){
         if(resultado.equals("invalido")){
             Context context = getApplicationContext();
             CharSequence text = "Usuario Invalido!";
@@ -79,6 +79,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
             Intent intent = new Intent(this, home.class);
+            intent.putExtra("tipoUsr",tipo);
             startActivity(intent);
             finish();
         }
@@ -88,13 +89,14 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         @Override
         protected Void doInBackground(String... params) {
             resultLogin = WebService.invokeLogin(correo,password, "login");
+            resultTipo=WebService.dimeTipo(correo);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
             pg.setVisibility(View.INVISIBLE);
-            LoginSucces(resultLogin);
+            LoginSucces(resultLogin,resultTipo);
         }
 
         @Override

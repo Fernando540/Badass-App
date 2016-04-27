@@ -1,5 +1,6 @@
 package acm1pt.badassapp;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,8 @@ public class home extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_);
-
+        Intent intent=new Intent();
+        final String tipoUsr=intent.getStringExtra("tipoUsr");
         final Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
 
         setSupportActionBar(toolbar);
@@ -41,24 +43,42 @@ public class home extends AppCompatActivity{
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                switch(tab.getPosition()) {
-                    case 0:
-                        viewPager.setCurrentItem(0);
-                        toolbar.setTitle("Estatus");
-                        break;
-                    case 1:
-                        viewPager.setCurrentItem(1);
-                        toolbar.setTitle("Despensa");
-                        break;
-                    case 2:
-                        viewPager.setCurrentItem(2);
-                        toolbar.setTitle("Habitaciones");
-                        break;
-                    case 3:
-                        viewPager.setCurrentItem(3);
-                        toolbar.setTitle("Configuración");
-                        break;
+                if(tipoUsr.equals("1")){
+                    switch(tab.getPosition()) {
+                        case 0:
+                            viewPager.setCurrentItem(0);
+                            toolbar.setTitle("Estatus");
+                            break;
+                        case 1:
+                            viewPager.setCurrentItem(1);
+                            toolbar.setTitle("Despensa");
+                            break;
+                        case 2:
+                            viewPager.setCurrentItem(2);
+                            toolbar.setTitle("Habitaciones");
+                            break;
+                        case 3:
+                            viewPager.setCurrentItem(3);
+                            toolbar.setTitle("Configuración");
+                            break;
+                    }
+                }else{
+                    switch(tab.getPosition()) {
+                        case 0:
+                            viewPager.setCurrentItem(0);
+                            toolbar.setTitle("Estatus");
+                            break;
+                        case 1:
+                            viewPager.setCurrentItem(2);
+                            toolbar.setTitle("Habitaciones");
+                            break;
+                        case 2:
+                            viewPager.setCurrentItem(3);
+                            toolbar.setTitle("Configuración");
+                            break;
+                    }
                 }
+
             }
 
             @Override
