@@ -125,16 +125,7 @@ public class home extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==boton){
-            String correo="e@e.com";
-            String enchufe=boton.getText().toString();
-            String habit="Habitacion 1";
-            String voltaje="";
-            if(boton.isChecked()){
-                voltaje="0";
-            }else{
-                voltaje="50";
-            }
-            WebService.onOff(correo,voltaje,enchufe,habit);
+
         }
     }
 }
