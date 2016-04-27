@@ -16,18 +16,15 @@ public class WebService {
     private static String URLcesar = "http://192.168.1.72:8181/WebServices/CifraCesar?wsdl";
     private static String URLsha = "http://192.168.1.72:8181/WebServices/CifraSha?wsdl";
     private static String URLlog = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
-<<<<<<< HEAD
-    private static String URLTipo="http://192.168.1.72:8181/WebServices/WSGenerico?wsdl";
+    private static String URLGenerico="http://192.168.1.72:8181/WebServices/WSGenerico?wsdl";
+
 
     /*
     private static String URLcesar = "http://192.168.1.72:8181/WebServices/CifraCesar?wsdl";
     private static String URLsha = "http://192.168.1.72:8181/WebServices/CifraSha?wsdl";
     private static String URLlog = "http://192.168.1.72:8181/WebServices/WS_Login?wsdl";
-    private static String URLTipo="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";*/
-=======
-    private static String URLGenerico="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";
-
->>>>>>> origin/master
+    private static String URLTipo="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";
+    private static String URLGenerico="http://badasshouse.ddns.net:81/WebServices/WSGenerico?wsdl";*/
 
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://WSBadassHouse/";
@@ -126,6 +123,7 @@ public class WebService {
         }
         return tipo;
     }
+
     public static void onOff(String correo, String voltaje,String contact, String habit){
         SoapObject request = new SoapObject(NAMESPACE, "simulaCorr");
         request.addProperty("correo", correo);
@@ -138,7 +136,7 @@ public class WebService {
 
         try
         {
-            transporte.call(SOAP_ACTION+"dimeTipo", envelope);
+            transporte.call(SOAP_ACTION+"simulaCorr", envelope);
             /*SoapPrimitive response =(SoapPrimitive)envelope.getResponse();
             tipo = response.toString();*/
         }

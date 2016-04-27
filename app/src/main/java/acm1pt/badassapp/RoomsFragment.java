@@ -1,15 +1,17 @@
 package acm1pt.badassapp;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 
-public class RoomsFragment extends Fragment implements View.OnClickListener {
-    Switch boton;
+public class RoomsFragment extends Fragment  {
+    static Switch boton;
     public static RoomsFragment newInstance() {
         RoomsFragment fragment = new RoomsFragment();
         return fragment;
@@ -31,26 +33,37 @@ public class RoomsFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_rooms, container, false);
         boton=(Switch) v.findViewById(R.id.enchufe1);
-        boton.setOnClickListener(this);
+        boton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked){
+                    PrendeTask taskOn = new PrendeTask();
+                    taskOn.execute();
+                }else{
+                    ApagaTask taskOff = new ApagaTask();
+                    taskOff.execute();
+                }
+            }
+        });
         return v;
     }
-    public void apagaPrende1(String voltaje, String contacto){
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v==boton){
-            String correo="e@e.com";
-            String enchufe="Enchufe 1";
-            String habit="Habitacion 1";
-            String voltaje="";
-            if(boton.isChecked()){
-                voltaje="0";
-            }else{
-                voltaje="50";
-            }
-            WebService.onOff(correo,voltaje,enchufe,habit);
+    private class PrendeTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            WebService.onOff("e@e.com","50","Enchufe1","Habitación 1");
+            return null;
         }
     }
+
+    private class ApagaTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            WebService.onOff("e@e.com","0","Enchufe1","Habitación 1");
+            return null;
+        }
+    }
+
+
 }
